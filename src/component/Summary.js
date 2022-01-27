@@ -4,8 +4,6 @@ import useFetch from "../hooks/useFetch";
 import classes from "../styles/Summary.module.css";
 const Summary = ({ score, noq }) => {
   const getKeyword =useMemo(()=>{
-    
-      console.log("Summary")
       if ((score / noq) * 5 * 100 < 50) {
         return "failed";
       } else if ((score / noq) * 5 * 100 < 75) {
@@ -25,7 +23,8 @@ const Summary = ({ score, noq }) => {
 
   const { loading, error, result } = useFetch(reqUrl, reqMethod, reqHeader);
 
-  const successBadge = result ? result.photos[0].src.medium : image;
+  const successBadge = result ? result.photos[1].src.medium : image;
+  
   return (
     <div className={classes.summary}>
       <div className={classes.point}>
